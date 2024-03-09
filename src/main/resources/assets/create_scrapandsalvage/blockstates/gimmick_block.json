@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": {
+        "model":  "create_scrapandsalvage:block/gimmick_block"
+      }
+
+  }
+}

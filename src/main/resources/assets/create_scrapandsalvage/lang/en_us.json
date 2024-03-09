@@ -1,0 +1,16 @@
+{
+  "creativetab.create_scrapandsalvage.scrap_and_salvage_tab": "Create Scrap and Salvage",
+
+  "item.create_scrapandsalvage.scrap_sickle": "Scrap Sickle",
+  "block.create_scrapandsalvage.scrap_heap": "Scrap Heap",
+
+  "block.create_scrapandsalvage.gimmick_block": "Gimmick Block",
+
+  "item.create_scrapandsalvage.brassbeetleglider": "Brass beetle Glider",
+  "key.category.create_scrapandsalvage.scrapandsalvage": "Scrap and Salvage",
+  "key.create_scrapandsalvage.toggle_gliding": "Toggle Glide",
+
+  "message.create_scrapandsalvage.glider_equipped": "Glider On",
+  "message.create_scrapandsalvage.no_glider": "Glider Off"
+
+}
