@@ -14,7 +14,7 @@ public class BrassBeetleGliderModel extends GeoModel<BrassBeetleGliderItem> {
 
     @Override
     public ResourceLocation getTextureResource(BrassBeetleGliderItem animatable) {
-        return new ResourceLocation(CreateScrapandSalvage.MOD_ID, "textures/armor/brassbeetleglider.png");
+        return new ResourceLocation(CreateScrapandSalvage.MOD_ID, "textures/item/brassbeetleglider.png");
     }
 
     @Override

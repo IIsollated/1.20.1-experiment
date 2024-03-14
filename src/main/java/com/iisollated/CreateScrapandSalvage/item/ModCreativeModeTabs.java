@@ -16,13 +16,11 @@ public class ModCreativeModeTabs {
 
     public static final RegistryObject<CreativeModeTab> SCRAPANDSALVAGE_TAB =
             CREATIVE_MODE_TABS.register("scrap_and_salvage_tab", () -> CreativeModeTab.builder().icon(()
-                            -> new ItemStack(ModItems.SCRAP_SICKLE.get()))
+                            -> new ItemStack(ModBlocks.GIMMICK_BLOCK.get()))
                     .title(Component.translatable("creativetab.create_scrapandsalvage.scrap_and_salvage_tab"))
                     .displayItems((pParameters, pOutput) -> {
 
-                      pOutput.accept(ModItems.SCRAP_SICKLE.get());
                       pOutput.accept(ModItems.BRASS_GLIDER.get());
-                      pOutput.accept(ModBlocks.SCRAP_HEAP.get());
                       pOutput.accept(ModItems.GIMMICK_BLOCK_ITEM.get());
                       pOutput.accept(ModItems.WORKSHOP_CHEST_ITEM.get());
 

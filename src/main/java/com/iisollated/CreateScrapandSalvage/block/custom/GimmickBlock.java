@@ -1,7 +1,9 @@
 package com.iisollated.CreateScrapandSalvage.block.custom;
 
-import com.mojang.serialization.MapCodec;
+import com.iisollated.CreateScrapandSalvage.block.entity.GimmickBlockEntity;
+import com.iisollated.CreateScrapandSalvage.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -17,26 +19,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class GimmickBlock extends BaseEntityBlock {
-
-    public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 14,15);
 
     public GimmickBlock(Properties pProperties) {
         super(pProperties);
     }
 
-    public static boolean chestState = true;
+    public static final VoxelShape SHAPE = Block.box(1, 0, 1, 15, 14,15);
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
-    }
-
-    //@Override
-    protected MapCodec<? extends BaseEntityBlock> m_304657_() {
-        return null;
     }
 
     @Override
@@ -45,39 +41,35 @@ public class GimmickBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
-        super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
-    }
-
-    @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        if (this.chestState) {
-            this.chestState = false;
-            System.out.println("chestState " + chestState);
-        }
-
-       /* if (pLevel.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else {
-            MenuProvider menuprovider = this.getMenuProvider(pState, pLevel, pPos);
-            if (menuprovider != null) {
-                pPlayer.openMenu(menuprovider);
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            if (entity instanceof GimmickBlockEntity) {
+                // Create the block entity
+                GimmickBlockEntity gimmickBlockEntity = new GimmickBlockEntity(pPos, pState);
+                // Set the interaction result
+                gimmickBlockEntity.setInteractionResult(InteractionResult.sidedSuccess(pLevel.isClientSide()));
+                NetworkHooks.openScreen((ServerPlayer) pPlayer, gimmickBlockEntity, pPos);
+            } else {
+                throw new IllegalStateException("Our Container provider is Missing!");
             }
-            return InteractionResult.CONSUME;
-        }*/
-
-        return InteractionResult.CONSUME;
+        }
+        return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new com.iisollated.CreateScrapandSalvage.block.entity.client.GimmickBlock(pPos, pState);
+        return new GimmickBlockEntity(pPos, pState);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return super.getTicker(pLevel, pState, pBlockEntityType);
+        if(pLevel.isClientSide()) {
+            return null;
+        }
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.GIMMICK_GLOCK_BE.get(),
+                (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
     }
 }

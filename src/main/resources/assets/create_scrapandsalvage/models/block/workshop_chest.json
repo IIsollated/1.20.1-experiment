@@ -6,7 +6,7 @@
     128
   ],
   "textures": {
-    "particle": "create_scrapandsalvage:block/brass_casing"
+    "particle": "create_scrapandsalvage:block/scrap_block_1"
   },
   "display": {
     "thirdperson_righthand": {

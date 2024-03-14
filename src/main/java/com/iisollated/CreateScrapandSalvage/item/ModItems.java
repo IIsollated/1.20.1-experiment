@@ -4,7 +4,6 @@ import com.iisollated.CreateScrapandSalvage.CreateScrapandSalvage;
 import com.iisollated.CreateScrapandSalvage.block.ModBlocks;
 import com.iisollated.CreateScrapandSalvage.item.custom.BrassBeetleGliderItem;
 import com.iisollated.CreateScrapandSalvage.item.custom.GimmickBlockItem;
-import com.iisollated.CreateScrapandSalvage.item.custom.SickleItem;
 import com.iisollated.CreateScrapandSalvage.item.custom.WorkshopChestItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
@@ -17,10 +16,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, CreateScrapandSalvage.MOD_ID);
-
-        public static final RegistryObject<Item> SCRAP_SICKLE = ITEMS.register("scrap_sickle",
-                () -> new SickleItem(Tiers.WOOD, 2, 2, new Item.Properties()));
-
     public static final RegistryObject<Item> BRASS_GLIDER = ITEMS.register("brassbeetleglider",
             () -> new BrassBeetleGliderItem(ModArmorMaterials.CARBONSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
 

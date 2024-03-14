@@ -20,10 +20,6 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, CreateScrapandSalvage.MOD_ID);
 
-    public static final RegistryObject<Block> SCRAP_HEAP = registerBlock("scrap_heap",
-            () -> new Block(BlockBehaviour.Properties.of()
-                    .sound(SoundType.CHAIN).requiresCorrectToolForDrops()));
-
     public static final RegistryObject<Block> GIMMICK_BLOCK = BLOCKS.register("gimmick_block",
             () -> new GimmickBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion()));
 
