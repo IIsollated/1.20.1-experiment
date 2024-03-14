@@ -24,6 +24,7 @@ public class ModCreativeModeTabs {
                       pOutput.accept(ModItems.BRASS_GLIDER.get());
                       pOutput.accept(ModBlocks.SCRAP_HEAP.get());
                       pOutput.accept(ModItems.GIMMICK_BLOCK_ITEM.get());
+                      pOutput.accept(ModItems.WORKSHOP_CHEST_ITEM.get());
 
                     }).build());
 

@@ -1,12 +1,17 @@
 package com.iisollated.CreateScrapandSalvage;
 
 import com.iisollated.CreateScrapandSalvage.block.ModBlocks;
+import com.iisollated.CreateScrapandSalvage.block.entity.ModBlockEntities;
 import com.iisollated.CreateScrapandSalvage.block.entity.client.GimmickBlockRenderer;
-import com.iisollated.CreateScrapandSalvage.block.entity.client.ModBlockEntities;
+import com.iisollated.CreateScrapandSalvage.block.entity.client.WorkshopChestRenderer;
 import com.iisollated.CreateScrapandSalvage.item.ModCreativeModeTabs;
 import com.iisollated.CreateScrapandSalvage.item.ModItems;
 import com.iisollated.CreateScrapandSalvage.networking.ModMessages;
+import com.iisollated.CreateScrapandSalvage.screen.GimmickBlockScreen;
+import com.iisollated.CreateScrapandSalvage.screen.ModMenuTypes;
+import com.iisollated.CreateScrapandSalvage.screen.WorkshopChestScreen;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,6 +43,8 @@ public class CreateScrapandSalvage
         ModItems.register(modEventBus);
 
         ModBlockEntities.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
 
         GeckoLib.initialize();
 
@@ -74,7 +81,10 @@ public class CreateScrapandSalvage
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            BlockEntityRenderers.register(ModBlockEntities.GIMMICK_BLOCK.get(), GimmickBlockRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.GIMMICK_GLOCK_BE.get(), GimmickBlockRenderer::new);
+            MenuScreens.register(ModMenuTypes.GIMMICK_BLOCK_MENU.get(), GimmickBlockScreen::new);
+            BlockEntityRenderers.register(ModBlockEntities.WORKSHOP_CHEST_BE.get(), WorkshopChestRenderer::new);
+            MenuScreens.register(ModMenuTypes.WORKSHOP_CHEST_MENU.get(), WorkshopChestScreen::new);
         }
     }
 }
