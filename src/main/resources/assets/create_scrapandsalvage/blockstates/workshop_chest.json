@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": {
+        "model":  "create_scrapandsalvage:block/workshop_chest"
+      }
+
+  }
+}

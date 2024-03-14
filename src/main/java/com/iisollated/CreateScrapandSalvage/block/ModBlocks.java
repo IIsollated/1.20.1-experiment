@@ -2,6 +2,7 @@ package com.iisollated.CreateScrapandSalvage.block;
 
 import com.iisollated.CreateScrapandSalvage.CreateScrapandSalvage;
 import com.iisollated.CreateScrapandSalvage.block.custom.GimmickBlock;
+import com.iisollated.CreateScrapandSalvage.block.custom.WorkshopChest;
 import com.iisollated.CreateScrapandSalvage.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -24,8 +25,10 @@ public class ModBlocks {
                     .sound(SoundType.CHAIN).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> GIMMICK_BLOCK = BLOCKS.register("gimmick_block",
-            () -> new GimmickBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD).requiresCorrectToolForDrops()
-                    .noOcclusion()));
+            () -> new GimmickBlock(BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion()));
+
+    public static final RegistryObject<Block> WORKSHOP_CHEST = BLOCKS.register("workshop_chest",
+            () -> new WorkshopChest(BlockBehaviour.Properties.of().sound(SoundType.WOOD).noOcclusion()));
 
     private static <T extends  Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

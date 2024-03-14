@@ -5,6 +5,7 @@ import com.iisollated.CreateScrapandSalvage.block.ModBlocks;
 import com.iisollated.CreateScrapandSalvage.item.custom.BrassBeetleGliderItem;
 import com.iisollated.CreateScrapandSalvage.item.custom.GimmickBlockItem;
 import com.iisollated.CreateScrapandSalvage.item.custom.SickleItem;
+import com.iisollated.CreateScrapandSalvage.item.custom.WorkshopChestItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Tiers;
@@ -23,9 +24,11 @@ public class ModItems {
     public static final RegistryObject<Item> BRASS_GLIDER = ITEMS.register("brassbeetleglider",
             () -> new BrassBeetleGliderItem(ModArmorMaterials.CARBONSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
 
-    
     public static final RegistryObject<Item> GIMMICK_BLOCK_ITEM = ITEMS.register("gimmick_block",
             () -> new GimmickBlockItem(ModBlocks.GIMMICK_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> WORKSHOP_CHEST_ITEM = ITEMS.register("workshop_chest",
+            () -> new WorkshopChestItem(ModBlocks.WORKSHOP_CHEST.get(), new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {
